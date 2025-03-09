@@ -2,7 +2,6 @@ local playerSpeed = 5
 
 function PlayerStartup()
             
-            PlayerSprite:setCollideRect(0, 0, 32, 48)
             -- Player is 200 always on the y 
             PlayerSprite:moveTo(200, 200)
             PlayerSprite:add()

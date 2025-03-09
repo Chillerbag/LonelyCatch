@@ -51,7 +51,17 @@ function pd.update()
     end
 end
 
+function pd.gameWillTerminate() 
+    if Score > HiScore then
+        SaveHiScore()
+    end
+end
 
+function pd.deviceWillSleep()
+    if Score > HiScore then
+        SaveHiScore()
+    end
+end
 
 
 

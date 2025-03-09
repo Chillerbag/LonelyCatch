@@ -12,25 +12,26 @@ function LevelStartup()
     FloorSprite:add()
 
     WallSpriteL = gfx.sprite.new()
-    WallSpriteL:setCollideRect(380, 0, 20, 225)
+    WallSpriteL:setCollideRect(380, 0, 20, 200)
     WallSpriteL:add()
 
     WallSpriteR = gfx.sprite.new()
-    WallSpriteR:setCollideRect(0, 0, 20, 225)
+    WallSpriteR:setCollideRect(0, 0, 20, 200)
     WallSpriteR:add()
 end
 
 function EndGame()
-    GameState = "Menu"
+
     -- TODO: change this to use a spriteArray
     if Score > HiScore then
         SaveHiScore()
         gfx.drawTextAligned("New High Score", 200, 40, kTextAlignment.center)
         pd.wait(1000)
-        LoadHiScore() 
+        HiScore = Score
     end
     
     gfx.sprite.removeAll()
     ArmCollisionEnabled = false
+    GameState = "Menu"
 end
 

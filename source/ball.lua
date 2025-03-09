@@ -1,3 +1,5 @@
+
+
 function BallStartup()
     BallSprite:setCollideRect(0, 0, 24, 24)
     BallSprite.collisionResponse = gfx.sprite.kCollisionTypeOverlap
@@ -5,7 +7,10 @@ end
 
 function ShootBall()
     -- todo: shouldnt be doing this every frame
-    BallSprite:add()
+    if not BallCreated then 
+        BallSprite:add()
+        BallCreated = true
+    end
     BallVelocityY = BallVelocityY + Gravity
     BallSprite:moveBy(BallVelocityX, BallVelocityY)
     BallSprite:setRotation(BallSprite:getRotation() + 5)

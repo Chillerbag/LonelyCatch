@@ -13,7 +13,8 @@ function HandleCollisions()
         local isWallCollision = (sprite1 == WallSpriteL or sprite1 == WallSpriteR or 
                                  sprite2 == WallSpriteL or sprite2 == WallSpriteR)
 
-        local isFloorCollision = (sprite1 == FloorSprite or sprite1 == FloorSprite)
+        local isFloorCollision = (sprite1 == FloorSprite or sprite2 == FloorSprite)
+        print(isFloorCollision)
 
         local isCatchCollision = (sprite1 == PlayerArmSprite or sprite2 == PlayerArmSprite)
         
@@ -27,11 +28,14 @@ function HandleCollisions()
             -- have to do a unique combo, etc.
             GameState = "Caught"
             BallSprite:removeSprite()
+            BallCreated = false
+
             PlayerArmSprite:clearCollideRect()
             ArmCollisionEnabled = false
         end
 
         if (isBallCollision and isFloorCollision) or BallY > 225 then
+            BallCreated = false
             EndGame()
         end
     end

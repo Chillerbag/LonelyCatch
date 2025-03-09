@@ -9,3 +9,4 @@ HiScore = 0
 ArmCollisionEnabled = false
 BallX, BallY = BallSprite:getPosition()
 GameState = "Menu"
+BallCreated = false
