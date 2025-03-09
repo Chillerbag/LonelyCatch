@@ -24,15 +24,23 @@ end
 function BasicMovement()
     -- handle basic Player controls
     if pd.buttonIsPressed(pd.kButtonRight) then
-        PlayerSprite:setImage(PlayerRightStatic, 0, 1, 1)
+        PlayerSprite:setImage(PlayerRightMove, 0, 1, 1)
         PlayerArmSprite:moveBy(playerSpeed, 0)
         PlayerSprite:moveBy(playerSpeed, 0)
     end
     
     if pd.buttonIsPressed(pd.kButtonLeft) then
-        PlayerSprite:setImage(PlayerRightStatic, 1, 1, 1)
+        PlayerSprite:setImage(PlayerRightMove, 1, 1, 1)
         PlayerArmSprite:moveBy(-playerSpeed, 0)
         PlayerSprite:moveBy(-playerSpeed, 0)
+    end
+
+    if pd.buttonJustReleased(pd.kButtonLeft) then
+        PlayerSprite:setImage(PlayerRightStatic, 1, 1, 1)
+    end
+
+    if pd.buttonJustReleased(pd.kButtonRight) then
+        PlayerSprite:setImage(PlayerRightStatic, 0, 1, 1)
     end
     local crankPos = pd.getCrankPosition() 
     PlayerArmSprite:setRotation(crankPos, 1, 1)

@@ -5,6 +5,7 @@ InitialVelocity = 10
 BallImmunityFrames = 10  
 BallImmunityCounter = 0  
 Score = 0
+HiScore = 0
 ArmCollisionEnabled = false
 BallX, BallY = BallSprite:getPosition()
 GameState = "Menu"

@@ -17,16 +17,14 @@ import "menu"
 import "player"
 import "scoring"
 
+LoadHiScore()
+
 function pd.update()
     -- update sprites each frame
     HandleCollisions()
     gfx.sprite.update()
     if GameState == "Menu" then
-        gfx.drawTextAligned("Press B to Start", 200, 40, kTextAlignment.center)
-        if pd.buttonJustPressed(pd.kButtonB) then
-            Score = 0
-            GameState = "Starting"
-        end
+        RenderMenu()
     end
 
     if GameState ~= "Menu" then

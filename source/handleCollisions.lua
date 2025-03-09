@@ -32,12 +32,7 @@ function HandleCollisions()
         end
 
         if (isBallCollision and isFloorCollision) or BallY > 225 then
-            GameState = "Menu"
-
-            -- TODO: change this to use a spriteArray
-            gfx.sprite.removeAll()
-            ArmCollisionEnabled = false
-
+            EndGame()
         end
     end
 end

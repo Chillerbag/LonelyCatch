@@ -23,3 +23,18 @@ function LevelStartup()
     WallSpriteR:add()
 end
 
+function EndGame()
+    GameState = "Menu"
+    -- TODO: change this to use a spriteArray
+    if Score > HiScore then
+        SaveHiScore()
+        gfx.drawTextAligned("New High Score", 200, 40, kTextAlignment.center)
+        pd.wait(1000)
+        LoadHiScore()
+        
+    end
+    gfx.sprite.removeAll()
+    ArmCollisionEnabled = false
+
+end
+
