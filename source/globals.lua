@@ -1,0 +1,10 @@
+BallVelocityX = 0
+BallVelocityY = 0
+Gravity = 0.3
+InitialVelocity = 10
+BallImmunityFrames = 10  
+BallImmunityCounter = 0  
+Score = 0
+ArmCollisionEnabled = false
+BallX, BallY = BallSprite:getPosition()
+GameState = "Menu"
