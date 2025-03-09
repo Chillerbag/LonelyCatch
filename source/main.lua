@@ -4,12 +4,11 @@ import "CoreLibs/graphics"
 local pd = playdate
 local gfx = pd.graphics
 
---pd.inputHandlers.push(myInputHandlers)
-
 -- files with globals
+-- as a note, it is not possible to do the requires syntax in the playdate 
+-- runtime, so all functions are global
 import "sprites"
 import "globals"
-
 import "ball"
 import "handleCollisions"
 import "levelHandler"
