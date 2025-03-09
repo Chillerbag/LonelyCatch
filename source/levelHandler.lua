@@ -1,5 +1,3 @@
-local pd = playdate
-local gfx = pd.graphics
 
 function RenderLevel()
     gfx.drawText("Score: " .. Score, 25, 10)

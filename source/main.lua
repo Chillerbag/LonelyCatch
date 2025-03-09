@@ -1,8 +1,9 @@
 import "CoreLibs/sprites"
 import "CoreLibs/graphics"
+import "CoreLibs/animation"
 
-local pd = playdate
-local gfx = pd.graphics
+pd = playdate
+gfx = pd.graphics
 
 -- files with globals
 -- as a note, it is not possible to do the requires syntax in the playdate 

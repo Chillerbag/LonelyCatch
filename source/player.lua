@@ -1,5 +1,3 @@
-local pd = playdate
-local gfx = pd.graphics
 
 -- sprites
 
@@ -24,13 +22,13 @@ end
 function BasicMovement()
     -- handle basic Player controls
     if pd.buttonIsPressed(pd.kButtonRight) then
-        PlayerSprite:setImage(PlayerRightMove, 0, 1, 1)
+        PlayerSprite:setImage(PlayerAnimationLoop:image(), 0, 1, 1)
         PlayerArmSprite:moveBy(playerSpeed, 0)
         PlayerSprite:moveBy(playerSpeed, 0)
     end
     
     if pd.buttonIsPressed(pd.kButtonLeft) then
-        PlayerSprite:setImage(PlayerRightMove, 1, 1, 1)
+        PlayerSprite:setImage(PlayerAnimationLoop:image(), 1, 1, 1)
         PlayerArmSprite:moveBy(-playerSpeed, 0)
         PlayerSprite:moveBy(-playerSpeed, 0)
     end

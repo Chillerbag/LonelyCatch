@@ -1,5 +1,3 @@
-local pd = playdate
-local gfx = pd.graphics
 
 -- render menu and get high score
 

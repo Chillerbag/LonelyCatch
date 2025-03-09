@@ -1,5 +1,3 @@
-local pd = playdate
-local gfx = pd.graphics
 
 function SaveHiScore()
     -- Save game data into a table first
