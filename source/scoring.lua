@@ -1,4 +1,3 @@
-
 function SaveHiScore()
     -- Save game data into a table first
     local gameData = {

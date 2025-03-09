@@ -1,4 +1,3 @@
-
 function BallStartup()
     BallSprite:setCollideRect(0, 0, 24, 24)
     BallSprite.collisionResponse = gfx.sprite.kCollisionTypeOverlap

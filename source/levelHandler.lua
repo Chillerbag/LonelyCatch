@@ -1,4 +1,3 @@
-
 function RenderLevel()
     gfx.drawText("Score: " .. Score, 25, 10)
     -- draw the borders of the room
@@ -28,11 +27,10 @@ function EndGame()
         SaveHiScore()
         gfx.drawTextAligned("New High Score", 200, 40, kTextAlignment.center)
         pd.wait(1000)
-        LoadHiScore()
-        
+        LoadHiScore() 
     end
+    
     gfx.sprite.removeAll()
     ArmCollisionEnabled = false
-
 end
 

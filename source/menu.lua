@@ -1,6 +1,3 @@
-
--- render menu and get high score
-
 function RenderMenu()
     -- todo: shouldnt add every frame
     TitleSprite:add()

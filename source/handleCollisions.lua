@@ -24,13 +24,11 @@ function HandleCollisions()
         if isCatchCollision and isBallCollision then
             -- TODO: make scoring more interesting
             Score += 1
-
             -- have to do a unique combo, etc.
             GameState = "Caught"
             BallSprite:removeSprite()
             PlayerArmSprite:clearCollideRect()
             ArmCollisionEnabled = false
-            
         end
 
         if (isBallCollision and isFloorCollision) or BallY > 225 then

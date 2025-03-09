@@ -1,5 +1,3 @@
-
-
 -- imgs (global)
 ArmNoBall = gfx.image.new("images/armWithBallReleased.png")
 PlayerRightStatic = gfx.image.new("images/botRightStatic")

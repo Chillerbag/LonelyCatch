@@ -1,8 +1,4 @@
-
--- sprites
-
 local playerSpeed = 5
-
 
 function PlayerStartup()
             
@@ -17,7 +13,6 @@ function PlayerStartup()
             PlayerArmSprite:moveTo(x, y+4)
             PlayerArmSprite:add()
 end
-
 
 function BasicMovement()
     -- handle basic Player controls
