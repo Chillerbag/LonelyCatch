@@ -21,7 +21,7 @@ LoadHiScore()
 
 function pd.update()
     -- update sprites each frame
-    HandleCollisions()
+    HandlePlayerCollisions()
     gfx.sprite.update()
     if GameState == "Menu" then
         RenderMenu()

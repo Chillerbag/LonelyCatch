@@ -14,7 +14,27 @@ function ShootBall()
         BallCreated = true
     end
     BallVelocityY = BallVelocityY + Gravity
-    BallSprite:moveBy(BallVelocityX, BallVelocityY)
+    local _, _, collisions, collisionsLen = BallSprite:moveWithCollisions(BallX + BallVelocityX, BallY + BallVelocityY)
+
+    if collisionsLen ~= 0 then
+        for i = 1, #collisions do 
+            local collidedSprite = collisions[i].other
+            -- handle wall collisions with ball
+            if collidedSprite == WallSpriteL or collidedSprite == WallSpriteR then
+                HandleBallWall()
+            end
+
+            -- handle catch collision with ball
+            if collidedSprite == PlayerArmSprite then 
+                HandleBallCatch()
+            end
+
+            if collidedSprite == FloorSprite then
+                EndGame()
+            end
+        end
+    end
+
     BallSprite:setRotation(BallSprite:getRotation() + 5)
     local armX, armY = PlayerArmSprite:getPosition()
 

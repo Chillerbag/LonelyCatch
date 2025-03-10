@@ -8,8 +8,7 @@ local dashSpeed = 15
 function PlayerStartup()
             
             -- Player is 200 always on the y 
-            PlayerSprite:setCollideRect(0, 0, 32, 48)
-            PlayerSprite.collisionResponse = gfx.sprite.kCollisionTypeBounce
+            PlayerSprite:setCollideRect(0, 24, 32, 24)
             PlayerSprite:moveTo(200, 200)
             PlayerSprite:add()
     
@@ -21,6 +20,7 @@ function PlayerStartup()
 end
 
 function BasicMovement()
+    local x, y = PlayerSprite:getPosition()
     -- handle basic Player controls
     if pd.buttonIsPressed(pd.kButtonRight) and playerSpeed > 0 then
         direction = 1
@@ -50,12 +50,12 @@ end
 function CanShoot()
     if pd.buttonJustPressed(pd.kButtonA) then
         local armX, armY = PlayerArmSprite:getPosition()
-        BallSprite:moveTo(armX, armY)
+        BallSprite:moveTo(armX, armY - 20)
         local angle = pd.getCrankPosition() 
         local adjustedAngle = angle - 90 
         local angleRadians = math.rad(adjustedAngle)
         -- choose a random inital velocity
-        InitialVelocity = math.random(8, 15)
+        InitialVelocity = math.random(10, 13)
         BallVelocityX = InitialVelocity * math.cos(angleRadians)
         BallVelocityY = InitialVelocity * math.sin(angleRadians)
         
