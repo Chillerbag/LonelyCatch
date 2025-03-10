@@ -54,7 +54,7 @@ function HandleBallWall()
     
     -- Stop weird ball glitches
     local ballX, ballY = BallSprite:getPosition()
-    local correction = 15  
+    local correction = 12
     
     -- push ball away from wall based on velocity direction
     if BallVelocityX > 0 then
@@ -91,9 +91,9 @@ function HandleBallCatch()
     else 
         if GetPlayerisDashing() then
             scoringTable.dashBounceMult += 1
-        else
-            scoringTable.bounce += 1
         end
+        scoringTable.bounce += 1
+
         BounceSynth:playNote(1318.63, 1, 0.05, 0)
 
         -- get direction to hit ball back
@@ -103,7 +103,7 @@ function HandleBallCatch()
 
         local randomFactor = math.random(8, 12)
         BallVelocityY = math.sin(angleRadians) * randomFactor
-        BallVelocityX = math.cos(angleRadians) * randomFactor * -GetPlayerDirection()
+        BallVelocityX = math.cos(angleRadians) * randomFactor
         PlayerArmSprite:clearCollideRect()
         ArmCollisionEnabled = false
         BallImmunityCounter = 0
