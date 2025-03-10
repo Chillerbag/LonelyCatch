@@ -21,7 +21,6 @@ function HandleCollisions()
 
         if isPlayerCollision and isWallCollision then 
             StopPlayer()
-            print("Wall collision")
         end
         
         if isBallCollision and isWallCollision then
@@ -41,9 +40,12 @@ function HandleCollisions()
                 PlayerCatching = false
             else 
                 Score += 1 
-                randomFactor = math.random(1, 2) * GetPlayerDirection()
+                local randomFactor = math.random(1, 3) * GetPlayerDirection()
                 BallVelocityY = -BallVelocityY + randomFactor
                 BallVelocityX = -BallVelocityX + randomFactor
+                PlayerArmSprite:clearCollideRect()
+                ArmCollisionEnabled = false
+                BallImmunityCounter = 0
             end
 
         end
