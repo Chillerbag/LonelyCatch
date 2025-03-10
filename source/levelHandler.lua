@@ -12,11 +12,11 @@ function LevelStartup()
     FloorSprite:add()
 
     WallSpriteL = gfx.sprite.new()
-    WallSpriteL:setCollideRect(380, 0, 20, 200)
+    WallSpriteL:setCollideRect(380, -200, 20, 400)
     WallSpriteL:add()
 
     WallSpriteR = gfx.sprite.new()
-    WallSpriteR:setCollideRect(0, 0, 20, 200)
+    WallSpriteR:setCollideRect(0, -200, 20, 400)
     WallSpriteR:add()
 end
 

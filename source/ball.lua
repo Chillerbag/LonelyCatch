@@ -6,7 +6,9 @@ function BallStartup()
 end
 
 function ShootBall()
-    -- todo: shouldnt be doing this every frame
+    -- this needs to be in the update loop unfortunately
+    BallX, BallY = BallSprite:getPosition()
+
     if not BallCreated then 
         BallSprite:add()
         BallCreated = true

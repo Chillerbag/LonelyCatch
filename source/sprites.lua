@@ -5,6 +5,7 @@ PlayerRightMove = gfx.image.new("images/botRightMove")
 PlayerShootArm = gfx.image.new("images/armNoBall")
 Ball = gfx.image.new("images/ball.png")
 Title = gfx.image.new("images/title")
+BallX, BallY = 0, 0
 
 -- sprites (global)
 PlayerArmSprite = gfx.sprite.new(PlayerShootArm)

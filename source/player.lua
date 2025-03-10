@@ -1,8 +1,11 @@
 local playerSpeed = 5
+local direction = 1
 
 function PlayerStartup()
             
             -- Player is 200 always on the y 
+            PlayerSprite:setCollideRect(0, 0, 32, 48)
+            PlayerSprite.collisionResponse = gfx.sprite.kCollisionTypeBounce
             PlayerSprite:moveTo(200, 200)
             PlayerSprite:add()
     
@@ -16,15 +19,17 @@ end
 function BasicMovement()
     -- handle basic Player controls
     if pd.buttonIsPressed(pd.kButtonRight) then
+        direction = 1
         PlayerSprite:setImage(PlayerAnimationLoop:image(), 0, 1, 1)
-        PlayerArmSprite:moveBy(playerSpeed, 0)
-        PlayerSprite:moveBy(playerSpeed, 0)
+        PlayerArmSprite:moveBy(playerSpeed * direction, 0)
+        PlayerSprite:moveBy(playerSpeed * direction, 0)
     end
     
     if pd.buttonIsPressed(pd.kButtonLeft) then
+        direction = -1
         PlayerSprite:setImage(PlayerAnimationLoop:image(), 1, 1, 1)
-        PlayerArmSprite:moveBy(-playerSpeed, 0)
-        PlayerSprite:moveBy(-playerSpeed, 0)
+        PlayerArmSprite:moveBy(playerSpeed * direction, 0)
+        PlayerSprite:moveBy(playerSpeed * direction, 0)
     end
 
     if pd.buttonJustReleased(pd.kButtonLeft) then
@@ -45,7 +50,8 @@ function CanShoot()
         local angle = pd.getCrankPosition() 
         local adjustedAngle = angle - 90 
         local angleRadians = math.rad(adjustedAngle)
-        
+        -- choose a random inital velocity
+        InitialVelocity = math.random(8, 15)
         BallVelocityX = InitialVelocity * math.cos(angleRadians)
         BallVelocityY = InitialVelocity * math.sin(angleRadians)
         
@@ -65,4 +71,9 @@ end
 function PlayerShootState()
     PlayerArmSprite:setImage(ArmNoBall)
     BasicMovement()
+end
+
+function StopPlayer()
+    PlayerSprite:moveBy(playerSpeed * -direction, 0)
+    PlayerArmSprite:moveBy(playerSpeed * -direction, 0)
 end

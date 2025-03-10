@@ -14,9 +14,15 @@ function HandleCollisions()
                                  sprite2 == WallSpriteL or sprite2 == WallSpriteR)
 
         local isFloorCollision = (sprite1 == FloorSprite or sprite2 == FloorSprite)
-        print(isFloorCollision)
 
         local isCatchCollision = (sprite1 == PlayerArmSprite or sprite2 == PlayerArmSprite)
+
+        local isPlayerCollision = (sprite1 == PlayerSprite or sprite2 == PlayerSprite)
+
+        if isPlayerCollision and isWallCollision then 
+            StopPlayer()
+            print("Wall collision")
+        end
         
         if isBallCollision and isWallCollision then
             BallVelocityX = -BallVelocityX * 0.9
@@ -34,7 +40,7 @@ function HandleCollisions()
             ArmCollisionEnabled = false
         end
 
-        if (isBallCollision and isFloorCollision) or BallY > 225 then
+        if (isBallCollision and isFloorCollision) or (BallY > 225 or BallX < 0 or BallX > 400) then
             BallCreated = false
             EndGame()
         end
