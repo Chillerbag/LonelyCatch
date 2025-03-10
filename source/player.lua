@@ -146,3 +146,7 @@ end
 function GetPlayerDirection()
     return direction
 end
+
+function GetPlayerisDashing()
+    return dashing
+end

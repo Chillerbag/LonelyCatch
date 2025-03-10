@@ -1,5 +1,5 @@
 function RenderLevel()
-    gfx.drawText("Score: " .. Score, 25, 10)
+    RenderScore()
     -- draw the borders of the room
     gfx.drawLine(20, 225, 380, 225)
     gfx.drawLine(380, 0, 380, 225)
@@ -13,10 +13,12 @@ function LevelStartup()
 
     WallSpriteL = gfx.sprite.new()
     WallSpriteL:setCollideRect(380, -200, 20, 400)
+    WallSpriteL.collisionResponse = gfx.sprite.kCollisionTypeBounce
     WallSpriteL:add()
 
     WallSpriteR = gfx.sprite.new()
     WallSpriteR:setCollideRect(0, -200, 20, 400)
+    WallSpriteR.collisionResponse = gfx.sprite.kCollisionTypeBounce
     WallSpriteR:add()
 end
 

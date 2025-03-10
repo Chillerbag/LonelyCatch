@@ -15,3 +15,32 @@ function LoadHiScore()
         HiScore = gameData["HiScore"]
     end
 end
+
+function RenderScore()
+    local scoreStr = "Score: " .. Score
+    
+    if GameState == "ShootBall" then
+        local scoringTable = ReadScoringTable()
+        local pendingPoints = scoringTable.bounce + scoringTable.catch
+        local multiplier = scoringTable.dashBounceMult + scoringTable.wallBounceMult
+        
+        if pendingPoints > 0 then
+            scoreStr = "Score: " .. Score .. " + " .. pendingPoints
+            
+            if multiplier > 0 then
+                scoreStr = scoreStr .. " x " .. multiplier
+            end
+        end
+    end
+
+    gfx.drawText(scoreStr, 25, 10)
+end
+
+function AddToScore()
+    local scoringTable = ReadScoringTable()
+    local aggScore = (scoringTable.bounce + scoringTable.catch) * (scoringTable.dashBounceMult + scoringTable.wallBounceMult)
+    if scoringTable.dashCatch == true then
+        aggScore *= 3
+    end
+    return aggScore
+end

@@ -36,15 +36,14 @@ function pd.update()
         PlayerStartup()
         LevelStartup()
         BallStartup()
+        ResetScoringTable()
         GameState = "Caught"
     end 
 
-    -- control behaviour for when player can shoot the ball
     if GameState == "Caught" then 
         PlayerCaughtState()
     end
     
-    -- control behaviour for when player can fetch the ball
     if GameState == "ShootBall" then
         ShootBall()
         PlayerShootState()
