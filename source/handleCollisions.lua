@@ -61,7 +61,6 @@ function HandleBallCatch()
             scoringTable.dashCatch = 1
         end
         local tempScore = AddToScore()
-        print(tempScore)
         if tempScore ~= 1 then
             Score += tempScore
         end
@@ -71,7 +70,6 @@ function HandleBallCatch()
         PlayerArmSprite:clearCollideRect()
         PlayerSprite:setRotation(0, 1, 1)
         ArmCollisionEnabled = false
-        PlayerCatching = false
         ResetScoringTable()
     else 
         if GetPlayerisDashing() then

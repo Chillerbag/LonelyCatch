@@ -118,6 +118,7 @@ function SetArmSprite()
 end
 
 function PlayerCaughtState()
+    PlayerCatching = false
     PlayerArmSprite:setImage(PlayerShootArm)
     CanShoot()
     BasicMovement()
