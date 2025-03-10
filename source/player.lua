@@ -1,5 +1,9 @@
 local playerSpeed = 5
 local direction = 1
+local dashTime = 10
+local dashDuration = 0
+local dashing = false
+local dashSpeed = 10
 
 function PlayerStartup()
             
@@ -18,14 +22,14 @@ end
 
 function BasicMovement()
     -- handle basic Player controls
-    if pd.buttonIsPressed(pd.kButtonRight) then
+    if pd.buttonIsPressed(pd.kButtonRight) and playerSpeed > 0 then
         direction = 1
         PlayerSprite:setImage(PlayerAnimationLoop:image(), 0, 1, 1)
         PlayerArmSprite:moveBy(playerSpeed * direction, 0)
         PlayerSprite:moveBy(playerSpeed * direction, 0)
     end
     
-    if pd.buttonIsPressed(pd.kButtonLeft) then
+    if pd.buttonIsPressed(pd.kButtonLeft) and playerSpeed > 0 then
         direction = -1
         PlayerSprite:setImage(PlayerAnimationLoop:image(), 1, 1, 1)
         PlayerArmSprite:moveBy(playerSpeed * direction, 0)
@@ -62,6 +66,45 @@ function CanShoot()
     end
 end
 
+function CanDash()
+    if pd.buttonJustPressed(pd.kButtonB) and dashing == false then
+        PlayerSprite:setRotation(90, 1, 1)
+        if direction == -1 then
+            PlayerSprite:setImage(PlayerDashAnimationLoop:image(), 1, 1, 1)
+        else
+            PlayerSprite:setImage(PlayerDashAnimationLoop:image(), 0, 1, 1)
+        end
+        dashing = true
+    end
+end
+function StartDash()
+    if dashDuration < dashTime then
+        local x, y = PlayerSprite:getPosition()
+        -- stop player from moving
+        playerSpeed = 0
+        PlayerArmSprite:moveTo(x + (dashSpeed * direction), y)
+        PlayerSprite:moveTo(x + (dashSpeed * direction), y)
+        playerSpeed = 5
+        dashDuration += 1
+        dashSpeed *= 0.95
+    else
+        dashing = false
+        PlayerSprite:setRotation(0, 1, 1)
+        if direction == -1 then
+            PlayerSprite:setImage(PlayerRightStatic, 1, 1, 1)
+        else
+            PlayerSprite:setImage(PlayerRightStatic, 0, 1, 1)
+        end
+        
+        dashDuration = 0
+        dashSpeed = 10
+    end
+end
+
+function CanPaddle()
+
+end
+
 function PlayerCaughtState()
     PlayerArmSprite:setImage(PlayerShootArm)
     CanShoot()
@@ -71,6 +114,10 @@ end
 function PlayerShootState()
     PlayerArmSprite:setImage(ArmNoBall)
     BasicMovement()
+    CanDash()
+    if dashing == true then
+        StartDash()
+    end
 end
 
 function StopPlayer()
