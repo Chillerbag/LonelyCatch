@@ -1,7 +1,7 @@
 local pd = playdate
 local gfx = pd.graphics
 
--- this is awful. We need to rewrite this
+-- this is awful. Need to rewrite this
 local scoringTable
 
 local DEFAULT_SCORING_TABLE = {
@@ -48,7 +48,7 @@ function HandleBallFloor()
 end
 
 function HandleBallWall()
-    
+
     BallVelocityX = -BallVelocityX * 0.95
     scoringTable.wallBounceMult += 1
     
@@ -95,9 +95,15 @@ function HandleBallCatch()
             scoringTable.bounce += 1
         end
         BounceSynth:playNote(1318.63, 1, 0.05, 0)
-        local randomFactor = math.random(1, 3) * GetPlayerDirection()
-        BallVelocityY = -BallVelocityY + randomFactor
-        BallVelocityX = -BallVelocityX + randomFactor
+
+        -- get direction to hit ball back
+        local angle = pd.getCrankPosition() 
+        local adjustedAngle = angle - 90 
+        local angleRadians = math.rad(adjustedAngle)
+
+        local randomFactor = math.random(8, 12)
+        BallVelocityY = math.sin(angleRadians) * randomFactor
+        BallVelocityX = math.cos(angleRadians) * randomFactor * -GetPlayerDirection()
         PlayerArmSprite:clearCollideRect()
         ArmCollisionEnabled = false
         BallImmunityCounter = 0

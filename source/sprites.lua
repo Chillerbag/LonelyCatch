@@ -6,13 +6,17 @@ PlayerShootArm = gfx.image.new("images/armNoBall")
 PlayerPaddleArm = gfx.image.new("images/armWithPaddle")
 Ball = gfx.image.new("images/ball.png")
 Title = gfx.image.new("images/title")
-BallX, BallY = 0, 0
+Background = gfx.image.new("images/background")
 
 -- sprites (global)
 PlayerArmSprite = gfx.sprite.new(PlayerShootArm)
 PlayerSprite = gfx.sprite.new(PlayerRightStatic)
 BallSprite = gfx.sprite.new(Ball)
 TitleSprite = gfx.sprite.new(Title)
+BackgroundSprite = gfx.sprite.new(Background)
+BackgroundSprite:setStencilPattern(0.3)
+
+
 
 -- animations (global)
 PlayerAnim = gfx.imagetable.new("images/botRightMove")

@@ -1,5 +1,6 @@
 BallVelocityX = 0
 BallVelocityY = 0
+BallX, BallY = 0, 0
 Gravity = 0.3
 InitialVelocity = 10
 BallImmunityFrames = 15

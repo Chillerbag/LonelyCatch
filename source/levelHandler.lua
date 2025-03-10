@@ -7,6 +7,9 @@ function RenderLevel()
 end
 
 function LevelStartup()
+    BackgroundSprite:setZIndex(-10)
+    BackgroundSprite:moveTo(200, 113)
+    BackgroundSprite:add()
     FloorSprite = gfx.sprite.new()
     FloorSprite:setCollideRect(20, 225, 360, 15)
     FloorSprite:add()

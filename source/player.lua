@@ -49,6 +49,7 @@ end
 
 function CanShoot()
     if pd.buttonJustPressed(pd.kButtonA) then
+        SawSynth:playNote("F4", 1, 0.1)
         local armX, armY = PlayerArmSprite:getPosition()
         BallSprite:moveTo(armX, armY - 20)
         local angle = pd.getCrankPosition() 

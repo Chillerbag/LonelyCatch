@@ -16,8 +16,6 @@ CatchSynth = pd.sound.synth.new(pd.sound.kWaveTriangle)
 DashSynth = pd.sound.synth.new(pd.sound.kWaveSquare)
 DashSynth:setADSR(1, 2, 1, 1)
 
--- shooting synth
-
 -- jingle for the intro
 SinSynth = pd.sound.synth.new(pd.sound.kWaveSine)
 IntroJingle = pd.sound.track.new()
