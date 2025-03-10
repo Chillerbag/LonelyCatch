@@ -77,6 +77,8 @@ function HandleBallCatch()
         else
             scoringTable.bounce += 1
         end
+        SinSynth:playNote(1318.63, 1, 0.05, 0)
+        SinSynth:playNote(1318.63, 1, 0.05, 0.06)
         local randomFactor = math.random(1, 3) * GetPlayerDirection()
         BallVelocityY = -BallVelocityY + randomFactor
         BallVelocityX = -BallVelocityX + randomFactor

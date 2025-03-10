@@ -10,6 +10,7 @@ gfx = pd.graphics
 -- runtime, so all functions are global
 import "sprites"
 import "globals"
+import "sound"
 import "ball"
 import "handleCollisions"
 import "levelHandler"

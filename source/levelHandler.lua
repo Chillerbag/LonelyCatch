@@ -21,7 +21,7 @@ function LevelStartup()
 end
 
 function EndGame()
-
+    SquareSynth:playMIDINote("D3", 1, 0.5)
     -- TODO: change this to use a spriteArray
     if Score > HiScore then
         SaveHiScore()

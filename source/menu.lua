@@ -10,6 +10,7 @@ function RenderMenu()
     gfx.drawText("Press B to Start", 140, 120)
     gfx.drawText("High Score: " .. HiScore, 140, 160)
     if pd.buttonJustPressed(pd.kButtonB) then
+        IntroSequence:play()
         Score = 0
         rendered = false
         TitleSprite:remove()

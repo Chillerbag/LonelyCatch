@@ -27,7 +27,7 @@ function RenderScore()
         if pendingPoints > 1 then
             scoreStr = "Score: " .. Score .. " + " .. pendingPoints
             
-            if multiplier > 1 then
+            if multiplier >= 1 then
                 scoreStr = scoreStr .. " x " .. multiplier
             end
         end

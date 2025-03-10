@@ -21,6 +21,7 @@ function ShootBall()
             local collidedSprite = collisions[i].other
             -- handle wall collisions with ball
             if collidedSprite == WallSpriteL or collidedSprite == WallSpriteR then
+                SawSynth:playNote(65.7, 1, 0.1)
                 HandleBallWall()
             end
 
