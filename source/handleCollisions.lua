@@ -1,6 +1,9 @@
 local pd = playdate
 local gfx = pd.graphics
 
+-- this is awful. We need to rewrite this
+local scoringTable
+
 local DEFAULT_SCORING_TABLE = {
     dashBounceMult = 0,
     bounce = 0,
@@ -8,8 +11,6 @@ local DEFAULT_SCORING_TABLE = {
     dashCatch = 0,
     catch = 1 -- default point
 }
-
-local scoringTable
 
 function ResetScoringTable()
     -- Create a new table with the default values
@@ -57,7 +58,11 @@ function HandleCollisions()
                 if GetPlayerisDashing() then
                     scoringTable.dashCatch = 1
                 end
-                Score += AddToScore()
+                local tempScore = AddToScore()
+                print(tempScore)
+                if tempScore ~= 1 then
+                    Score += tempScore
+                end
                 GameState = "Caught"
                 BallSprite:removeSprite()
                 BallCreated = false
@@ -82,8 +87,6 @@ function HandleCollisions()
         end
 
         if (isBallCollision and isFloorCollision) or (BallY > 225 or BallX < 0 or BallX > 400) then
-            BallCreated = false
-            PlayerCatching = false
             EndGame()
         end
     end

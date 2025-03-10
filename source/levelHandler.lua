@@ -31,7 +31,9 @@ function EndGame()
         pd.wait(1000)
         HiScore = Score
     end
-    
+    BallCreated = false
+    PlayerCatching = false
+    ResetScoringTable()
     gfx.sprite.removeAll()
     ArmCollisionEnabled = false
     GameState = "Menu"

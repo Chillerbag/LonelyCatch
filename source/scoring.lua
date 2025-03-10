@@ -24,10 +24,10 @@ function RenderScore()
         local pendingPoints = scoringTable.bounce + scoringTable.catch
         local multiplier = scoringTable.dashBounceMult + scoringTable.wallBounceMult
         
-        if pendingPoints > 0 then
+        if pendingPoints > 1 then
             scoreStr = "Score: " .. Score .. " + " .. pendingPoints
             
-            if multiplier > 0 then
+            if multiplier > 1 then
                 scoreStr = scoreStr .. " x " .. multiplier
             end
         end
@@ -38,8 +38,15 @@ end
 
 function AddToScore()
     local scoringTable = ReadScoringTable()
-    local aggScore = (scoringTable.bounce + scoringTable.catch) * (scoringTable.dashBounceMult + scoringTable.wallBounceMult)
-    if scoringTable.dashCatch == true then
+    local pendingPoints = scoringTable.bounce + scoringTable.catch
+    local multiplier = scoringTable.dashBounceMult + scoringTable.wallBounceMult
+    local aggScore = 0
+    if multiplier ~= 0 then
+        aggScore = pendingPoints * multiplier
+    else
+        aggScore = pendingPoints
+    end
+    if scoringTable.dashCatch == 1 then
         aggScore *= 3
     end
     return aggScore
