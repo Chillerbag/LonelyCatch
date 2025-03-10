@@ -14,6 +14,7 @@ PlayerSprite = gfx.sprite.new(PlayerRightStatic)
 BallSprite = gfx.sprite.new(Ball)
 TitleSprite = gfx.sprite.new(Title)
 
+-- animations (global)
 PlayerAnim = gfx.imagetable.new("images/botRightMove")
 PlayerAnimationLoop = gfx.animation.loop.new(200, PlayerAnim, true)
 PlayerDashAnim = gfx.imagetable.new("images/botRightDash")

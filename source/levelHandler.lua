@@ -39,7 +39,9 @@ function EndGame()
     BallCreated = false
     PlayerCatching = false
     ArmCollisionEnabled = false
-    
+
+    -- reset player rotation (if in dash)
+    PlayerSprite:setRotation(0, 1, 1)
     ResetScoringTable()
     gfx.sprite.removeAll()
     GameState = "Menu"
