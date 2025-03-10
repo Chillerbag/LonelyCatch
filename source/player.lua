@@ -115,12 +115,17 @@ function PlayerShootState()
     PlayerArmSprite:setImage(ArmNoBall)
     BasicMovement()
     CanDash()
-    if dashing == true then
+    if dashing then
         StartDash()
     end
 end
 
 function StopPlayer()
-    PlayerSprite:moveBy(playerSpeed * -direction, 0)
-    PlayerArmSprite:moveBy(playerSpeed * -direction, 0)
+    if dashing then
+        PlayerSprite:moveBy(dashSpeed * -direction, 0)
+        PlayerArmSprite:moveBy(dashSpeed * -direction, 0)
+    else
+        PlayerSprite:moveBy(playerSpeed * -direction, 0)
+        PlayerArmSprite:moveBy(playerSpeed * -direction, 0)
+    end
 end
