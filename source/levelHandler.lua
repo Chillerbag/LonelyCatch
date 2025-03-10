@@ -27,15 +27,21 @@ function EndGame()
     -- TODO: change this to use a spriteArray
     if Score > HiScore then
         SaveHiScore()
+        gfx.drawTextAligned("Game Over", 200, 20, kTextAlignment.center)
         gfx.drawTextAligned("New High Score", 200, 40, kTextAlignment.center)
         pd.wait(1000)
         HiScore = Score
     end
+
+    gfx.drawTextAligned("Game Over", 200, 20, kTextAlignment.center)
+    pd.wait(500)
+
     BallCreated = false
     PlayerCatching = false
+    ArmCollisionEnabled = false
+    
     ResetScoringTable()
     gfx.sprite.removeAll()
-    ArmCollisionEnabled = false
     GameState = "Menu"
 end
 
