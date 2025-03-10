@@ -3,6 +3,7 @@ ArmNoBall = gfx.image.new("images/armWithBallReleased.png")
 PlayerRightStatic = gfx.image.new("images/botRightStatic")
 PlayerRightMove = gfx.image.new("images/botRightMove")
 PlayerShootArm = gfx.image.new("images/armNoBall")
+PlayerPaddleArm = gfx.image.new("images/armWithPaddle")
 Ball = gfx.image.new("images/ball.png")
 Title = gfx.image.new("images/title")
 BallX, BallY = 0, 0

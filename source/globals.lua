@@ -9,3 +9,4 @@ HiScore = 0
 ArmCollisionEnabled = false
 GameState = "Menu"
 BallCreated = false
+PlayerCatching = false

@@ -29,19 +29,28 @@ function HandleCollisions()
         end
 
         if isCatchCollision and isBallCollision then
-            -- TODO: make scoring more interesting
-            Score += 1
-            -- have to do a unique combo, etc.
-            GameState = "Caught"
-            BallSprite:removeSprite()
-            BallCreated = false
+            if PlayerCatching == true then
+                -- TODO: make scoring more interesting
+                Score += 1
+                -- have to do a unique combo, etc.
+                GameState = "Caught"
+                BallSprite:removeSprite()
+                BallCreated = false
+                PlayerArmSprite:clearCollideRect()
+                ArmCollisionEnabled = false
+                PlayerCatching = false
+            else 
+                Score += 1 
+                randomFactor = math.random(1, 2) * GetPlayerDirection()
+                BallVelocityY = -BallVelocityY + randomFactor
+                BallVelocityX = -BallVelocityX + randomFactor
+            end
 
-            PlayerArmSprite:clearCollideRect()
-            ArmCollisionEnabled = false
         end
 
         if (isBallCollision and isFloorCollision) or (BallY > 225 or BallX < 0 or BallX > 400) then
             BallCreated = false
+            PlayerCatching = false
             EndGame()
         end
     end

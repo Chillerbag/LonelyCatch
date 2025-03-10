@@ -3,7 +3,7 @@ local direction = 1
 local dashTime = 10
 local dashDuration = 0
 local dashing = false
-local dashSpeed = 10
+local dashSpeed = 15
 
 function PlayerStartup()
             
@@ -77,6 +77,7 @@ function CanDash()
         dashing = true
     end
 end
+
 function StartDash()
     if dashDuration < dashTime then
         local x, y = PlayerSprite:getPosition()
@@ -101,8 +102,19 @@ function StartDash()
     end
 end
 
-function CanPaddle()
+function CanSwitchArms()
+    if pd.buttonJustPressed(pd.kButtonDown) then
+        PlayerCatching = not PlayerCatching
+        SetArmSprite()
+    end
+end
 
+function SetArmSprite()
+    if not PlayerCatching then
+        PlayerArmSprite:setImage(PlayerPaddleArm, 0, 1, 1)
+    else 
+        PlayerArmSprite:setImage(ArmNoBall, 0, 1, 1)
+    end
 end
 
 function PlayerCaughtState()
@@ -112,9 +124,10 @@ function PlayerCaughtState()
 end
 
 function PlayerShootState()
-    PlayerArmSprite:setImage(ArmNoBall)
+    SetArmSprite()
     BasicMovement()
     CanDash()
+    CanSwitchArms()
     if dashing then
         StartDash()
     end
@@ -128,4 +141,8 @@ function StopPlayer()
         PlayerSprite:moveBy(playerSpeed * -direction, 0)
         PlayerArmSprite:moveBy(playerSpeed * -direction, 0)
     end
+end
+
+function GetPlayerDirection()
+    return direction
 end
