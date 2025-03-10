@@ -4,13 +4,19 @@ SawSynth = pd.sound.synth.new(pd.sound.kWaveSawtooth)
 
 -- death synth
 SquareSynth = pd.sound.synth.new(pd.sound.kWaveNoise)
-SquareSynth:setDecay(2)
+SquareSynth:setDecay(1)
 
 -- bouncing on paddle synth
+BounceSynth = pd.sound.synth.new(pd.sound.kWaveSine)
 
 -- catching ball synth
+CatchSynth = pd.sound.synth.new(pd.sound.kWaveTriangle)
 
 -- dashing synth
+DashSynth = pd.sound.synth.new(pd.sound.kWaveSquare)
+DashSynth:setADSR(1, 2, 1, 1)
+
+-- shooting synth
 
 -- jingle for the intro
 SinSynth = pd.sound.synth.new(pd.sound.kWaveSine)

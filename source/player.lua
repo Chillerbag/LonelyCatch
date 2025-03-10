@@ -74,6 +74,7 @@ function CanDash()
         else
             PlayerSprite:setImage(PlayerDashAnimationLoop:image(), 0, 1, 1)
         end
+        DashSynth:playMIDINote("D4", 1, 0.1)
         dashing = true
     end
 end
